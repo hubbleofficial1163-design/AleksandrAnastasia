@@ -1348,3 +1348,36 @@ body {
     cursor: pointer;
     accent-color: #483d32;
 }
+
+/* Убираем синее выделение при тапе на мобильных */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Дополнительно для кнопок и кликабельных элементов */
+button,
+.submit-btn,
+.radio-label,
+.checkbox-label,
+[role="button"],
+input[type="submit"] {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Убираем outline при фокусе (опционально, влияет на доступность) */
+button:focus,
+.submit-btn:focus,
+input:focus {
+    outline: none;
+}
+
+/* Сохраняем видимость фокуса для клавиатурной навигации */
+button:focus-visible,
+.submit-btn:focus-visible,
+input:focus-visible {
+    outline: 2px solid #483d32;
+    outline-offset: 2px;
+}
