@@ -4,11 +4,17 @@
 const MOBILE_VH_THRESHOLD = 120;
 
 function setStableViewportHeight(force = false) {
-    const current = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--stable-vh'), 10) || 0;
+    const styles = getComputedStyle(document.documentElement);
+    const currentStable = parseInt(styles.getPropertyValue('--stable-vh'), 10) || 0;
+    const currentCover = parseInt(styles.getPropertyValue('--cover-vh'), 10) || 0;
     const next = window.innerHeight;
 
-    if (force || Math.abs(next - current) > MOBILE_VH_THRESHOLD) {
+    if (force || Math.abs(next - currentStable) > MOBILE_VH_THRESHOLD) {
         document.documentElement.style.setProperty('--stable-vh', `${next}px`);
+    }
+
+    if (force || next > currentCover) {
+        document.documentElement.style.setProperty('--cover-vh', `${next}px`);
     }
 }
 
