@@ -1,5 +1,23 @@
 // Скрипт для свадебного сайта Александр & Анастасия
 
+// Stable viewport height for mobile browsers with collapsing/expanding address bar.
+const MOBILE_VH_THRESHOLD = 120;
+
+function setStableViewportHeight(force = false) {
+    const current = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--stable-vh'), 10) || 0;
+    const next = window.innerHeight;
+
+    if (force || Math.abs(next - current) > MOBILE_VH_THRESHOLD) {
+        document.documentElement.style.setProperty('--stable-vh', `${next}px`);
+    }
+}
+
+setStableViewportHeight(true);
+
+window.addEventListener('resize', () => setStableViewportHeight(false));
+window.addEventListener('orientationchange', () => {
+    setTimeout(() => setStableViewportHeight(true), 300);
+});
 // Таймер обратного отсчета до 25 июня 2026
 function updateCountdown() {
     const weddingDate = new Date(2026, 5, 25, 0, 0, 0);
@@ -299,3 +317,4 @@ if (guestForm) {
 const img = new Image();
 img.src = 'fon.jpg';
 img.onerror = () => console.log('Добавьте файл fon.jpg в папку с сайтом');
+
