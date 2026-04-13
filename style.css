@@ -9,12 +9,30 @@ body {
     min-height: 100vh;
 }
 
-.site-wrapper {
+/* .site-wrapper {
     background: url('fon.jpg') no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
     min-height: 100vh;
     width: 100%;
+} */
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.site-wrapper {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    z-index: 1;
 }
 
 .hero-section {
@@ -182,11 +200,11 @@ body {
 }
 
 /* Фикс для мобильных фонов */
-@supports (-webkit-touch-callout: none) {
+/* @supports (-webkit-touch-callout: none) {
     .site-wrapper {
         background-attachment: scroll;
     }
-}
+} */
 
 /* Вторая секция */
 .invite-section {
