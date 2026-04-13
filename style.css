@@ -1322,3 +1322,29 @@ body {
         font-size: 24px;
     }
 }
+
+
+/* Стили для чекбоксов (алкоголь) */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.checkbox-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: #483d32;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkbox-label input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #483d32;
+}
