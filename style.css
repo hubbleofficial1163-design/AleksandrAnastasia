@@ -1506,3 +1506,11 @@ input:focus-visible {
 .reg-icon {
     width: 200px; /* или любой другой размер */
 }
+
+.form-label, .radio-label, .checkbox-label, .form-hint {
+    font-size: 16px;
+}
+
+.radio-label, .checkbox-label {
+    font-size: 16px;
+}
