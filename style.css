@@ -1514,3 +1514,37 @@ input:focus-visible {
 .radio-label, .checkbox-label {
     font-size: 16px;
 }
+
+@font-face {
+    font-family: 'Flores del Sol';
+    src: url('Flores del Sol.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.name {
+    font-family: 'Flores del Sol', cursive;
+    font-weight: normal;
+    font-size: 90px;
+}
+
+.name-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.ampersand-wrap {
+    margin: -15px 0 -15px 0;
+}
+
+.ampersand {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+}
+
+@media (max-width: 768px) {
+    .ampersand-wrap {
+        margin: -10px 0 -10px 0;
+    }
+}
