@@ -1516,14 +1516,14 @@ input:focus-visible {
 }
 
 @font-face {
-    font-family: 'Flores del Sol';
-    src: url('Flores del Sol.otf') format('opentype');
+    font-family: 'Florisel Script';
+    src: url('Floriselscript.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 .name {
-    font-family: 'Flores del Sol', cursive;
+    font-family: 'Florisel Script', 'Flores del Sol', cursive;
     font-weight: normal;
     font-size: 90px;
 }
@@ -1546,5 +1546,58 @@ input:focus-visible {
 @media (max-width: 768px) {
     .ampersand-wrap {
         margin: -10px 0 -10px 0;
+    }
+} 
+
+.music-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 25px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(72, 61, 50, 0.4);
+    color: #483d32;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    padding: 10px 24px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.music-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: #483d32;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.music-icon {
+    font-size: 14px;
+    transition: transform 0.2s;
+}
+
+.music-btn:hover .music-icon {
+    transform: scale(1.1);
+}
+
+.music-text {
+    text-transform: lowercase;
+}
+
+@media (max-width: 480px) {
+    .music-btn {
+        margin-top: 18px;
+        padding: 8px 18px;
+        font-size: 11px;
+        gap: 6px;
+    }
+    
+    .music-icon {
+        font-size: 12px;
     }
 }
