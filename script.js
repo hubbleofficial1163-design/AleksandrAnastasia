@@ -301,3 +301,17 @@ img.src = 'fon.jpg';
 img.onerror = () => console.log('Добавьте файл fon.jpg в папку с сайтом');
 
 
+const music = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicToggle');
+let musicPlaying = false;
+
+musicBtn.addEventListener('click', () => {
+    if (musicPlaying) {
+        music.pause();
+        musicBtn.textContent = 'Включить музыку';
+    } else {
+        music.play().catch(e => console.log('Автоплей заблокирован'));
+        musicBtn.textContent = 'Выключить музыку';
+    }
+    musicPlaying = !musicPlaying;
+});
