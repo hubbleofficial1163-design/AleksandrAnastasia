@@ -305,13 +305,62 @@ const music = document.getElementById('bgMusic');
 const musicBtn = document.getElementById('musicToggle');
 let musicPlaying = false;
 
-musicBtn.addEventListener('click', () => {
-    if (musicPlaying) {
-        music.pause();
-        musicBtn.textContent = 'Включить музыку';
-    } else {
-        music.play().catch(e => console.log('Автоплей заблокирован'));
-        musicBtn.textContent = 'Выключить музыку';
+// Функция для обновления текста кнопки (будет вызвана из zero секции)
+window.updateMusicButtonState = function(isPlaying) {
+    if (musicBtn) {
+        musicBtn.textContent = isPlaying ? 'Выключить музыку' : 'Включить музыку';
     }
-    musicPlaying = !musicPlaying;
-});
+    musicPlaying = isPlaying;
+};
+
+// Обработчик кнопки (на случай, если пользователь захочет выключить музыку вручную)
+if (musicBtn) {
+    musicBtn.addEventListener('click', () => {
+        if (musicPlaying) {
+            music.pause();
+            musicBtn.textContent = 'Включить музыку';
+            musicPlaying = false;
+        } else {
+            music.play().catch(e => console.log('Ошибка воспроизведения'));
+            musicBtn.textContent = 'Выключить музыку';
+            musicPlaying = true;
+        }
+    });
+}
+
+// Zero секция - закрытие по клику и запуск музыки
+const zeroSection = document.getElementById('zeroSection');
+const musicForZero = document.getElementById('bgMusic');
+const musicBtnForZero = document.getElementById('musicToggle');
+
+if (zeroSection) {
+    zeroSection.addEventListener('click', function() {
+        // Добавляем класс для плавного исчезновения
+        zeroSection.classList.add('hide');
+        
+        // Запускаем музыку
+        if (musicForZero) {
+            musicForZero.play().then(() => {
+                if (musicBtnForZero) {
+                    musicBtnForZero.textContent = 'Выключить музыку';
+                }
+                // Обновляем состояние глобальной переменной musicPlaying из основного кода
+                if (typeof window.musicPlaying !== 'undefined') {
+                    window.musicPlaying = true;
+                }
+            }).catch(e => {
+                console.log('Автовоспроизведение заблокировано, нужно ручное включение');
+                if (musicBtnForZero && musicBtnForZero.textContent !== 'Выключить музыку') {
+                    musicBtnForZero.textContent = 'Включить музыку';
+                }
+            });
+        }
+        
+        // Удаляем секцию после анимации
+        setTimeout(() => {
+            if (zeroSection && zeroSection.parentNode) {
+                zeroSection.remove();
+            }
+        }, 800);
+    });
+}
